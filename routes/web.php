@@ -15,7 +15,7 @@ use App\Http\Controllers\PerpustkaanController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.master');
 });
 
 Route::get('/buku', [PerpustkaanController::class,'buku'])
