@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PerpustkaanController;
+use App\Http\Controllers\{
+    AnggotaController,
+    BukuController,
+    PetugasController
+};
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('dashboard');
 
-Route::get('/anggota', [PerpustkaanController::class, 'anggota'])->name('get_anggota');
+Route::get('/anggota', [AnggotaController::class, 'anggota'])->name('get_anggota');
 
-Route::get('/buku', [PerpustkaanController::class, 'buku'])->name('get_buku');
+Route::get('/buku', [BukuController::class, 'buku'])->name('get_buku');
 
-Route::get('/petugas', [PerpustkaanController::class, 'petugas'])->name('get_petugas');
+Route::get('/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');

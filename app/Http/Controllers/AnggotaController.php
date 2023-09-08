@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PerpustkaanController extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,8 @@ class PerpustkaanController extends Controller
     {
         return view('perpustakaan.anggota');
     }
-    public function buku()
-    {
-        return view('perpustakaan.buku');
-    }
-    public function petugas()
-    {
-        return view('perpustakaan.petugas');
-    }
+    
+
     /**
      * Show the form for creating a new resource.
      */
