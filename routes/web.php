@@ -15,14 +15,11 @@ use App\Http\Controllers\PerpustkaanController;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
-});
+    return view('welcome');
+})->name('dashboard');
 
-Route::get('/buku', [PerpustkaanController::class,'buku'])
-->name('get_buku');
+Route::get('/anggota', [PerpustkaanController::class, 'anggota'])->name('get_anggota');
 
-Route::get('/petugas', [PerpustkaanController::class,'petugas'])
-->name('get_petugas');
+Route::get('/buku', [PerpustkaanController::class, 'buku'])->name('get_buku');
 
-Route::get('/anggota', [PerpustkaanController::class,'anggota'])
-->name('get_anggota');
+Route::get('/petugas', [PerpustkaanController::class, 'petugas'])->name('get_petugas');
