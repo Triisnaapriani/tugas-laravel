@@ -40,26 +40,22 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>no</th>
-                      <th>kode anggota</th>
-                      <th>nama anggota</th>
-                      <th>jk anggota</th>
-                      <th>jurusan anggota</th>
+                      <th>nomor</th>
+                      <th>nama petugas</th>
+                      <th>Jabatan</th>
                       <th>no telpon</th>
-                      <th>alamat anggota</th>
+                      <th>alamat petugas</th>
                     </tr>
                     </thead>
                     <tbody>
                     </tbody>
-                        @forelse ($members as $key => $values)
+                        @forelse ($operators as $key => $values)
                         <tr>
                             <td>{{ $key + 1}}</td>
-                            <td>{{ $values->kode_anggota}}</td>
-                            <td>{{ $values->nama_anggota}}</td>
-                            <td>{{ $values->jk_anggota}}</td>
-                            <td>{{ $values->jurusan_anggota}}</td>
+                            <td>{{ $values->nama_petugas}}</td>
+                            <td>{{ $values->jabatan}}</td>
                             <td>{{ $values->no_telpon}}</td>
-                            <td>{{ $values->alamat_anggota}}</td>
+                            <td>{{ $values->alamat_petugas}}</td>
                             <td>
                                 <a href="#" class="btn-sm btn-info">show</a>
                                 <a href="#" class="btn-sm btn-warning">edit</a>

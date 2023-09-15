@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AnggotaController,
     BukuController,
-    PetugasController
+    PetugasController,
 };
 
 
@@ -30,3 +30,4 @@ Route::get('/', function () {
 // Route::get('/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');
 
 Route::resource('/anggota', AnggotaController::class);
+Route::resource('/petugas', PetugasController::class);
