@@ -34,7 +34,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                  <h3 class="card-title">List Data Genre</h3>
               </div>
                 <!-- /.card-header -->
                 <div class="card-body">`
@@ -43,27 +43,25 @@
                       <tr>
                         <th>Nomor</th>
                         <th>Nama</th>
-                        <th>Umur</th>
-                        <th>Bio</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                     </tbody>
-                    @forelse ($casts as $key => $value)
-                    <form action="{{ route('cast.destroy', $value->id) }}" method="post">
+                    @forelse ($genres as $key => $value)
+                    <form action="{{ route('genre.destroy', $value->id) }}" method="post">
                       @csrf
                       @method('DELETE')
                       <tr>
                           <td>{{ $key + 1}}</td>
                           <td>{{ $value->nama}}</td>
-                          <td>{{ $value->umur}}</td>
-                          <td>{{ $value->bio}}</td>
                           <td>
-                            <a href="{{ route('cast.show', $value->id) }}" class="btn-sm btn-info">show</a>
-                            <a href="{{ route('cast.edit', $value->id) }}" class="btn-sm btn-warning">edit</a>
-                            
-                              <button class="btn-sm btn-danger">Delete</button>
+                            <a href="{{ route('genre.edit', $value->id) }}" class="btn-sm btn-warning">
+                            <i class="fas fa-edit"></i>Edit
+                            </a>
+                              <button type="submit" class="btn-sm btn-danger">
+                                <i class="fas fa-trash-alt"></i>Hapus
+                              </button>
                             </form>
                           </td>  
                       </tr>

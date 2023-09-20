@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CastController;
+use App\Http\Controllers\{
+CastController,
+GenreController,
+};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +41,4 @@ use App\Http\Controllers\CastController;
 // });
 
 Route::resource('/cast', CastController::class);
+Route::resource('/genre', GenreController::class);

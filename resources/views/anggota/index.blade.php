@@ -40,7 +40,7 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>no</th>
+                      <th>nomor</th>
                       <th>kode anggota</th>
                       <th>nama anggota</th>
                       <th>jk anggota</th>
@@ -61,9 +61,12 @@
                             <td>{{ $values->no_telpon}}</td>
                             <td>{{ $values->alamat_anggota}}</td>
                             <td>
-                                <a href="#" class="btn-sm btn-info">show</a>
-                                <a href="#" class="btn-sm btn-warning">edit</a>
-                                <a href="#" class="btn-sm btn-danger">delete</a>
+                              <form action="{{ route('anggota.destroy', $values->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ route('anggota.show', $values->id)}}" class="btn-sm btn-info">show</a>
+                                <a href="{{ route('anggota.edit', $values->id)}}" class="btn-sm btn-warning">edit</a>
+                                <button type="submit" class="btn-sm btn-danger">delete</button>
                             </td>
                         </tr>
                         @empty

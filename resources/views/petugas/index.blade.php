@@ -50,6 +50,9 @@
                     <tbody>
                     </tbody>
                         @forelse ($operators as $key => $values)
+                        <form action="{{ route('petugas.destroy', $values->id)}}" method="POST">
+                          @csrf
+                          @method('DELETE')
                         <tr>
                             <td>{{ $key + 1}}</td>
                             <td>{{ $values->nama_petugas}}</td>
@@ -57,11 +60,12 @@
                             <td>{{ $values->no_telpon}}</td>
                             <td>{{ $values->alamat_petugas}}</td>
                             <td>
-                                <a href="#" class="btn-sm btn-info">show</a>
-                                <a href="#" class="btn-sm btn-warning">edit</a>
-                                <a href="#" class="btn-sm btn-danger">delete</a>
+                                <a href="{{ route('petugas.show', $values->id)}}" class="btn-sm btn-info">show</a>
+                                <a href="{{ route('petugas.edit', $values->id)}}" class="btn-sm btn-warning">edit</a>
+                                <button type="submit" class="btn-sm btn-danger">delete</button>
                             </td>
                         </tr>
+                        </form>
                         @empty
                             <tr>
                                 <td>Data masih kosong</td>
@@ -72,7 +76,11 @@
                     </table>
                   </div>
                   <!-- /.card-body -->
-                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
                 <!-- /.card -->
                 
 
