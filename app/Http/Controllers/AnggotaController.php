@@ -62,8 +62,8 @@ class AnggotaController extends Controller
     public function show(string $id)
     {
         //
-        $anggota = DB::table('members')->where('id', $id)->get();
-        return view('anggota.show', compact('anggota'));
+        $members = DB::table('members')->where('id', $id)->get();
+        return view('anggota.show', compact('members'));
     }
 
     /**
@@ -72,8 +72,8 @@ class AnggotaController extends Controller
     public function edit(string $id)
     {
         //
-        $anggota = DB::table('members')->where('id', $id)->get();
-        return view('anggota.edit', compact('anggota'));
+        $members = DB::table('members')->where('id', $id)->get();
+        return view('anggota.edit', compact('members'));
     }
 
     /**

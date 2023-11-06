@@ -1,77 +1,64 @@
 @extends('layouts.master')
 @section('title', 'anggota')
+@section('h1', 'Show Anggota')
 @section('content')
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Anggota</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Anggota</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Form Anggota</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="kode_anggota">Kode Anggota</label>
-                                        <input type="text" class="form-control" name="kode_anggota" id="kode_anggota" 
-                                            placeholder="Masukan kode" value="{{ $anggota[0]->kode_anggota}}"disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="nama_anggota" id="nama"
-                                            placeholder="Masukan nama" value="{{ $anggota[0]->nama_anggota}}"disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="jk_anggota" id="jk_anggota"
-                                            placeholder="Masukan nama" value="{{ $anggota[0]->jk_anggota}}"disabled>
-                                    </div>
-                                     <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="jurusan_anggota" id="jurusan_anggota"
-                                            placeholder="Masukan nama" value="{{ $anggota[0]->jurusan_anggota}}" disabled>
-                                    </div>
-                                
-                                    <div class="form-group">
-                                        <label>No. Telepon</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            </div>
-                                            <input type="number" class="form-control" name="no_telpon"
-                                                placeholder="Masukan angka" value="{{ $anggota[0]->no_telpon}}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <label>Alamat</label>
-                                            <textarea class="form-control" name="alamat_anggota" rows="3" placeholder="Masukan alamat"disabled>{{ $anggota[0]->alamat_anggota}}</textarea>
-                                        </div>
-                                </div>
-                                <div class="card-footer">
-                                    <input type="button" class="btn btn-danger" value="kembali" onclick="history.back()">
-                                </div>
-
-                                <!-- /.content -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Anggota</h3>
                         </div>
-                    @endsection
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="kode_anggota">Kode Anggota</label>
+                                <input type="text" name="kode_anggota" class="form-control" id="kode_anggota"
+                                    placeholder="Masukan kode" value="{{ $members[0]->kode_anggota }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_anggota">Nama</label>
+                                <input type="text" name="nama_anggota" class="form-control" id="nama_anggota"
+                                    placeholder="Masukan nama" value="{{ $members[0]->nama_anggota }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="jk_anggota">Jenis Kelamin</label>
+                                <input type="text" name="jk_anggota" class="form-control" id="jk_anggota"
+                                    placeholder="Masukan jenis kelamin" value="{{ $members[0]->jk_anggota }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Jurusan</label>
+                                <select class="custom-select" name="jurusan_anggota"
+                                    value="">
+                                    <option selected disabled>{{ $members[0]->jurusan_anggota }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>No. Telepon</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    </div>
+                                    <input type="number" name="no_telp_anggota" class="form-control"
+                                        data-inputmask='"mask": "(999) 999-9999"' data-mask placeholder="Masukan angka"
+                                        value="{{ $members[0]->no_telpon}}" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <textarea class="form-control" name="alamat_anggota" placeholder="Masukan alamat" disabled>{{ $members[0]->alamat_anggota }}</textarea>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-info" href="{{ route('anggota.index') }}" role="button">Back</a>
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

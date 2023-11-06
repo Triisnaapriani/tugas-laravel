@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BukuController extends Controller
 {
@@ -12,10 +13,8 @@ class BukuController extends Controller
     public function index()
     {
         //
-    }
-    public function buku()
-    {
-        return view('perpustakaan.buku');
+        $buku = DB::table('buku')->get();
+        return view(('buku.index'), compact('buku'));
     }
 
     /**
@@ -24,6 +23,7 @@ class BukuController extends Controller
     public function create()
     {
         //
+        return view('buku.create');
     }
 
     /**
@@ -32,6 +32,25 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'kode' => 'required',
+            'judul' => 'required',
+            'penulis' => 'required',
+            'penerbit' => 'required',
+            'tahun' => 'required',
+            'stok' => 'required',
+        ]);
+
+        $query = DB::table('buku')->insert([
+            'kode' => $request['kode'],
+            'judul' => $request['judul'],
+            'penulis' => $request['penulis'],
+            'penerbit' => $request['penerbit'],
+            'tahun' => $request['tahun'],
+            'stok' => $request['stok'],
+        ]);
+
+        return redirect('/buku');
     }
 
     /**
@@ -56,6 +75,25 @@ class BukuController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'kode' => 'required',
+            'judul' => 'required',
+            'penulis' => 'required',
+            'penerbit' => 'required',
+            'tahun' => 'required',
+            'stok' => 'required',
+        ]);
+
+        $query = DB::table('buku')->update([
+            'kode' => $request['kode'],
+            'judul' => $request['judul'],
+            'penulis' => $request['penulis'],
+            'penerbit' => $request['penerbit'],
+            'tahun' => $request['tahun'],
+            'stok' => $request['stok'],
+        ]);
+
+        return redirect()->route('buku.index');
     }
 
     /**
@@ -64,5 +102,6 @@ class BukuController extends Controller
     public function destroy(string $id)
     {
         //
+    
     }
 }

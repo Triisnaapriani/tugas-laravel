@@ -1,9 +1,9 @@
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
+<footer class="main-footer mt-3">
+  <!-- To the right -->
+  <div class="float-right d-none d-sm-inline">
       Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Tri Isna Apriani</a>.</strong> All rights reserved.
-  </footer>
-</div>
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2023 <a href="https://www.instagram.com/Isnaapriani23/">Tri Isna Apriani</a>.</strong> All rights
+  reserved.
+</footer>

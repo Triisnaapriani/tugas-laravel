@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CastController extends Controller 
+class CastController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +45,6 @@ class CastController extends Controller
         ]);
 
         return redirect('/cast');
-        
     }
 
     /**
@@ -53,7 +52,7 @@ class CastController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //SELECT * FROM casts WHERE id = $id
         $casts = DB::table('casts')->where('id', $id)->get();
         return view('cast.show', compact('casts'));
     }
@@ -81,8 +80,8 @@ class CastController extends Controller
         ]);
 
         $query = DB::table('casts')->where('id', $id)->update([
-            // 'field yang ada di table' => $request['name yang di kirim dari form']
-            'nama' => request['nama'],
+            //'field yang ada di table' => $request['name yang dikirim dari form']
+            'nama' => $request['nama'],
             'umur' => $request['umur'],
             'bio' => $request['bio'],
         ]);

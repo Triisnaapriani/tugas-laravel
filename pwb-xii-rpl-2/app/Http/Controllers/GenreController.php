@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
+
 class GenreController extends Controller
 {
     /**
@@ -14,7 +15,6 @@ class GenreController extends Controller
     {
         //
         $genres = Genre::all();
-
         return view('genre.index', compact('genres'));
     }
 
@@ -33,15 +33,18 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate(
-        [    
+        $request->validate([
             'nama' => 'required|unique:genres,nama|min:5',
-        ],[
-            'nama.required' => 'Nama harus diisi!',
-            'nama.unique'   => 'Nama sudah pernah digunakan!',
-            'nama.min'      => 'Nama harus lebih dari 5 karakter',
+        ], 
+        
+        // custom message
+        [           
+            'nama.required' => 'Nama harus diisi',
+            'nama.unique' => 'Nama sudah digunakan',
+            'nama.min' => 'Nama harus diisi lebih dari 5 karakter',
         ]);
 
+        // insert data use Eloquent ORM
         $genre = new Genre;
         $genre->nama = $request->nama;
         $genre->save();
@@ -55,6 +58,7 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         //
+        return view('genre.show', compact('genre'));
     }
 
     /**
@@ -63,6 +67,7 @@ class GenreController extends Controller
     public function edit(Genre $genre)
     {
         //
+        return view('genre.edit', compact('genre'));
     }
 
     /**
@@ -71,6 +76,17 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         //
+        $request->validate([
+            'nama' => 'required|unique:genres,nama|min:5',
+        ], [
+            'nama.required' => 'Nama harus diisi',
+            'nama.unique' => 'Nama sudah digunakan',
+            'nama.min' => 'Nama harus diisi lebih dari 5 karakter',
+        ]);
+
+        $genre->update($request->all());
+        
+        return redirect()->route('genre.index');
     }
 
     /**
@@ -79,6 +95,8 @@ class GenreController extends Controller
     public function destroy(Genre $genre)
     {
         //
+        //$genre = Genre::find($id);
+        //$genre->delete();
         $genre = Genre::where('id', $genre->id)->delete();
         return redirect()->route('genre.index');
     }
